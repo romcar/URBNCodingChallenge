@@ -14,7 +14,6 @@ export default styled.div`
   transition: width 0.35s;
 
   :hover {
-    grid-column-end: 5;
     width: 20vw;
   }
 `;

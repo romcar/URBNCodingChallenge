@@ -19,8 +19,6 @@ router.route('/search')
         res.statusCode(404).send(err);
       }
 
-      // console.log(response)
-      // console.log(body)
       res.end(JSON.stringify(body));
     });
   });

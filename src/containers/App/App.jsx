@@ -15,7 +15,7 @@ export default () => {
       <NavBar />
       <SideBar />
       <Search />
-      <Events />
+      {/* <Events /> */}
     </StyledApp>
   )
 }
