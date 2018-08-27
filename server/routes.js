@@ -2,9 +2,11 @@ const router = require('express').Router();
 const request = require('request');
 
 const config = require('../config');
-router.route('/test')
+router.route('/search')
   .get((req, res) => {
     let key = 'app_key=' + config.app_key || process.env.EVENTFUL_KEY;
+
+    /* location, query, time, category,  */
     const options = {
       method: 'GET',
       headers: {
