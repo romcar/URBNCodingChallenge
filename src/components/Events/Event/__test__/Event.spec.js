@@ -58,7 +58,7 @@ describe('Event Component', () => {
     expect(wrapper.find('.event-desc').length).toEqual(1);
 
     if (testEvent.description) {
-      let expected = testEvent.description.substring(0, 200);
+      let expected = testEvent.description.substring(0, 175) + '...';
       expect(wrapper.find('.event-desc').render().text()).toEqual(expected);
     } else {
       expect(wrapper.find('.event-desc').render().text()).toEqual("There is no description for this event, sorry");
@@ -67,7 +67,7 @@ describe('Event Component', () => {
 
   it('Should have an event description that does not exceed 200 chars', () => {
     const wrapper = shallow(<Event event={testEvent} />);
-    expect(wrapper.find('.event-desc').render().text().length).toBeLessThanOrEqual(200);
+    expect(wrapper.find('.event-desc').render().text().length).toBeLessThanOrEqual(178);
   });
 
 });

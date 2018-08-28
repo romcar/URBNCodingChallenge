@@ -37,8 +37,8 @@ class Event extends Component {
 
     return (
       <StyledEvent className="event">
-        <StyledEventInfo className="event-item" onClick={this.toggleEventModal}>
-          <div className="event-image">
+        <StyledEventInfo className="event-item">
+          <div className="event-image" onClick={this.toggleEventModal}>
             {event.image ? <StyledImage src={event.image.medium.url} /> : null}
           </div>
           <div className="event-info">
@@ -52,11 +52,11 @@ class Event extends Component {
             </StyledEventLocation>
             <br />
             <span className="event-desc">
-              {event.description ? convert(event.description.substring(0, 200)) : 'There is no description for this event, sorry'}
+              {event.description ? convert(event.description.substring(0, 175) + "...") : 'There is no description for this event, sorry'}
             </span>
           </div>
           <Modal open={isClicked} onClose={this.toggleEventModal} center>
-            <ClickedEvent lat={event.latitude} lng={event.longitude}></ClickedEvent>
+            <ClickedEvent {...event}></ClickedEvent>
           </Modal>
         </StyledEventInfo>
       </StyledEvent>
