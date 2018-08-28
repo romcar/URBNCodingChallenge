@@ -39,7 +39,7 @@ export default class Search extends Component {
   render() {
     console.log(this.state)
     return (
-      <Container rows={[3, 4]} cols={[7, 16]}>
+      <Container rows={[3, 4]} cols={[6, 17]}>
         <StyledSearch>
           <StyledInput type="text" placeholder="Location" onChange={this.handleLocationChange} />
           <StyledInput type="text" placeholder="Find" onChange={this.handleQueryChange} />

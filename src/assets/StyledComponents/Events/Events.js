@@ -8,9 +8,12 @@ export default styled.div`
   width: 100%;
   padding: 1em;
   border-radius: 0.5em;
+  max-height: 75vh;
+  margin-top: .5em;
+  overflow: scroll;
 
   grid-row-start: 4;
-  grid-row-end: 16;
+  grid-row-end: 18;
   grid-column-start: 5;
   grid-column-end: 18;
 `;
