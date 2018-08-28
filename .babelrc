@@ -1,0 +1,30 @@
+{
+  // same as .babelrc
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false
+      }
+    ],
+    "react"
+  ],
+  "plugins": [
+    "babel-plugin-styled-components",
+    "transform-class-properties",
+    "react-hot-loader/babel"
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "env"
+        ],
+        "react"
+      ],
+      "plugins": [
+        "transform-es2015-modules-commonjs"
+      ]
+    }
+  }
+}
