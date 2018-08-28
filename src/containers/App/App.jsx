@@ -13,7 +13,6 @@ import Events from '../../components/Events/Events';
 // temp imports
 import data from '../../../seed';
 
-console.log(data.events);
 export default class App extends Component {
   constructor(props) {
     super(props);
