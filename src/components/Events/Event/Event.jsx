@@ -19,15 +19,15 @@ class Event extends Component {
 
     this.state = {
       isClicked: false
-    }
+    };
 
     this.toggleEventModal = this.toggleEventModal.bind(this);
-  }
+  };
 
   toggleEventModal() {
     const { isClicked } = this.state;
     this.setState({ isClicked: !isClicked });
-  }
+  };
 
 
   render() {
@@ -56,13 +56,13 @@ class Event extends Component {
             </span>
           </div>
           <Modal open={isClicked} onClose={this.toggleEventModal} center>
-            <ClickedEvent></ClickedEvent>
+            <ClickedEvent lat={event.latitude} lng={event.longitude}></ClickedEvent>
           </Modal>
         </StyledEventInfo>
       </StyledEvent>
     );
-  }
-}
+  };
+};
 
 // This could possibly be broken up into further components
 

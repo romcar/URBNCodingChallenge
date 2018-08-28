@@ -76,7 +76,10 @@ exports[`Event Component Should render component 1`] = `
       showCloseIcon={true}
       styles={Object {}}
     >
-      <_default />
+      <ClickedEvent
+        lat="39.9833256"
+        lng="-75.2229687"
+      />
     </Modal>
   </styled.div>
 </styled.div>
