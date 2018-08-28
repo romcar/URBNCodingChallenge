@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export default styled.div`
- display: inline-block;
+  display: inline-block;
   position: relative;
 
   grid-row-start: ${props => props.rows[0]};
