@@ -9,7 +9,6 @@ export default styled.div`
   padding: 1em;
   border-radius: 0.5em;
   max-height: 75vh;
-  margin-top: .5em;
   overflow: scroll;
 
   grid-row-start: 4;

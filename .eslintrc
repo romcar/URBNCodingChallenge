@@ -11,16 +11,19 @@
         "ecmaFeatures": {
             "globalReturn": true,
             "impliedStrict": true,
+            "jest": true,
             "jsx": true,
             "arrowFunction": true
         }
     },
     "plugins": [
-        "react"
+        "react",
+        "jest"
     ],
     "env": {
         "es6": true,
-        "browser": true
+        "browser": true,
+        "jest/globals": true
     },
     "rules": {
         "react/jsx-filename-extension": [
