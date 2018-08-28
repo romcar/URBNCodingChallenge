@@ -11,11 +11,13 @@ import StyledEventLocation from '../../assets/StyledComponents/EventInfo/EventLo
 
 // components
 import Address from './Address';
+import ModalImage from '../ModalImage/ModalImage';
+import Description from './Description';
 
 export default (props) => {
   setTimeout(() => { utils.initMap(google, props.latitude, props.longitude) }, 0);
 
-  console.log(props)
+  const desc = props.description ? utils.convertSpecialCharsToString(props.description) : null;
   return (
     <StyledClickedEvent>
       <StyledModalTitle>
@@ -24,6 +26,8 @@ export default (props) => {
       <Container rows={[2, 3]} cols={[1, 9]}>
         <StyledEventLocation>{`${props.city_name}, ${props.region_abbr}. ${moment(props.start_time).format('llll')}`}</StyledEventLocation>
       </Container>
+      <ModalImage image={props.image}></ModalImage>
+      <Description desc={desc}></Description>
       <StyledModalMap id="event-modal-map" >
         Map did not display
       </StyledModalMap>
