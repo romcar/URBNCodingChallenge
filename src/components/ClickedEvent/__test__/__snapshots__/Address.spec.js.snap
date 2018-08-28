@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Address Component Should match the snapshot 1`] = `
+<styled.div
+  className="event-modal-address"
+>
+  <a
+    className="venue-name"
+    href="http://philadelphia.eventful.com/venues/mann-center-for-the-performing-arts-/V0-001-000282568-8?utm_source=apis&utm_medium=apim&utm_campaign=apic"
+  >
+    Mann Center for the Performing Arts
+  </a>
+  <div
+    className="venue-address"
+  >
+    5201 Parkside Avenue Philadelphia, PA. 19131
+  </div>
+</styled.div>
+`;
