@@ -34,7 +34,7 @@ export default class Event extends Component {
             <span>{event.description ? convert(event.description.substring(0, 200)) : null}</span>
           </div>
         </StyledEventInfo>
-      </StyledEvent >
+      </StyledEvent>
     );
   }
 }
