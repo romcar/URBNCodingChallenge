@@ -16,6 +16,8 @@ export default styled.div`
     display: block;
     width: 70%;
     height: 100%;
-    float: right
+    float: right;
+    overflow: hidden;
+    overflow-y: scroll;
   }
 `;
