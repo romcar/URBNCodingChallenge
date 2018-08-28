@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import StyledEvent from '../../../assets/StyledComponents/Event/Event';
 
 
@@ -8,10 +8,18 @@ import StyledEventInfo from '../../../assets/StyledComponents/EventInfo/EventInf
 import StyledEventTitle from '../../../assets/StyledComponents/EventInfo/EventTitle';
 import StyledEventLocation from '../../../assets/StyledComponents/EventInfo/EventLocation';
 
-export default ({ event }) => {
-  console.log(event);
+export default class Event extends Component {
+  constructor(props) {
+    super(props);
 
-  const convertSpecialCharsToString = (string) => {
+    // this.convertSpecialCharsToString = this.this.convertSpecialCharsToString.bind(this);
+  }
+
+  toggleEventModal() {
+    console.log('toggling');
+  }
+
+  convertSpecialCharsToString(string) {
     let newString = string;
     newString = newString.replace(/&quot;/ig, '"');
     newString = newString.replace(/&lt;/ig, '<');
@@ -19,20 +27,25 @@ export default ({ event }) => {
     newString = newString.replace(/&amp;/ig, '&');
     newString = newString.replace(/&#039;/ig, "'");
     return newString;
-  };
+  }
 
-  return (
-    <StyledEvent>
-      <StyledEventInfo>
-        <div className="event-image">
-          {event.image ? <StyledImage src={event.image.medium.url} /> : null}
-        </div>
-        <div className="event-info">
-          <StyledEventTitle>{event.title}</StyledEventTitle><StyledEventLocation>{`${event.city_name}, ${event.region_abbr}`}</StyledEventLocation>
-          <br />
-          <span>{event.description ? convertSpecialCharsToString(event.description.substring(0, 200)) : null}</span>
-        </div>
-      </StyledEventInfo>
-    </StyledEvent>
-  );
-};
+  render() {
+    const { event } = this.props;
+    const convert = this.convertSpecialCharsToString;
+
+    return (
+      <StyledEvent>
+        <StyledEventInfo onClick={this.toggleEventModal}>
+          <div className="event-image">
+            {event.image ? <StyledImage src={event.image.medium.url} /> : null}
+          </div>
+          <div className="event-info">
+            <StyledEventTitle>{event.title}</StyledEventTitle><StyledEventLocation>{`${event.city_name}, ${event.region_abbr}`}</StyledEventLocation>
+            <br />
+            <span>{event.description ? convert(event.description.substring(0, 200)) : null}</span>
+          </div>
+        </StyledEventInfo>
+      </StyledEvent >
+    );
+  }
+}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react';
 import './App.css';
 
 // styled components
@@ -13,14 +13,43 @@ import Events from '../../components/Events/Events';
 // temp imports
 import data from '../../../seed';
 
-console.log(data.events)
-export default () => {
-  return (
-    <StyledApp>
-      <NavBar />
-      <SideBar />
-      <Search />
-      <Events events={data.events} />
-    </StyledApp>
-  )
+console.log(data.events);
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+    this.getCurrentLocation = this.getCurrentLocation.bind(this);
+  }
+
+  componentDidMount() {
+    if (!this.state.location) {
+      this.getCurrentLocation();
+    }
+  }
+
+  getCurrentLocation() {
+    // Trying HTML 5 geolocation
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((pos) => {
+        const position = {
+          lat: pos.coords.latitude,
+          lng: pos.coords.longitude,
+        };
+        console.log(position);
+        this.setState({ location: position });
+      });
+    }
+  }
+  render() {
+    return (
+      <StyledApp>
+        <NavBar />
+        <SideBar />
+        <Search />
+        <Events events={data.events} />
+      </StyledApp>
+    );
+  }
 }
+
