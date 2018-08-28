@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Event Component Should render component 1`] = `
+<styled.div
+  className="event"
+>
+  <styled.div
+    className="event-item"
+    onClick={[Function]}
+  >
+    <div
+      className="event-image"
+    >
+      <styled.img
+        src="http://d1marr3m5x4iac.cloudfront.net/images/medium/I0-001/003/948/039-3.jpeg_/sugarland-39.jpeg"
+      />
+    </div>
+    <div
+      className="event-info"
+    >
+      <styled.h4
+        className="event-title"
+      >
+        Sugarland
+      </styled.h4>
+      <styled.span
+        className="event-loc"
+      >
+        Philadelphia, PA. Sun, Sep 9, 2018 7:00 PM
+      </styled.span>
+      <br />
+      <styled.span
+        className="event-venue"
+      >
+        Mann Center for the Performing Arts
+      </styled.span>
+      <br />
+      <span
+        className="event-desc"
+      >
+        There once was a description here but no more. Actually there was no description and a story had to be told. He picked up the watter bottle, took a sip, and put it down. Then immediately took a drag o
+      </span>
+    </div>
+  </styled.div>
+</styled.div>
+`;
