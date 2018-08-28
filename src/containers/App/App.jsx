@@ -22,20 +22,23 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    if (!this.state.location) {
-      this.getCurrentLocation();
+    if (this.state.location) {
+
     }
   }
 
   getCurrentLocation() {
     // Trying HTML 5 geolocation
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((pos) => {
         const position = {
           lat: pos.coords.latitude,
           lng: pos.coords.longitude,
+          timeOfLocation: new Date()
         };
         console.log(position);
+
         this.setState({ location: position });
       });
     }
@@ -45,7 +48,7 @@ export default class App extends Component {
       <StyledApp>
         <NavBar />
         <SideBar />
-        <Search />
+        <Search getLoc={this.getCurrentLocation} />
         <Events events={data.events} />
       </StyledApp>
     );
