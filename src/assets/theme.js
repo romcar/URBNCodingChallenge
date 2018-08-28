@@ -4,5 +4,6 @@ module.exports = {
   white: 'rgb(255, 255, 255)',
   shadow: 'rgba(80, 136, 158, 0.4)', // sidebar 40% opacity
   eventLocation: 'rgb(137, 137, 137)',
+  "link--hover": "rgb(232, 140, 83)",
 };
 
