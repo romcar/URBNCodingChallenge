@@ -3,11 +3,15 @@ import moment from 'moment';
 import React, { Component } from 'react';
 import StyledEvent from '../../../assets/StyledComponents/Event/Event';
 import utils from '../../../assets/utils';
+
 // styled components
 import StyledImage from '../../../assets/StyledComponents/Image/Image';
 import StyledEventInfo from '../../../assets/StyledComponents/EventInfo/EventInfo';
 import StyledEventTitle from '../../../assets/StyledComponents/EventInfo/EventTitle';
 import StyledEventLocation from '../../../assets/StyledComponents/EventInfo/EventLocation';
+
+// components
+import ClickedEvent from '../../ClickedEvent/ClickedEvent';
 
 class Event extends Component {
   constructor(props) {
@@ -38,14 +42,21 @@ class Event extends Component {
             {event.image ? <StyledImage src={event.image.medium.url} /> : null}
           </div>
           <div className="event-info">
-            <StyledEventTitle className="event-title">{event.title}</StyledEventTitle><StyledEventLocation className="event-loc">{`${event.city_name}, ${event.region_abbr}. ${moment(event.start_time).format('llll')}`}</StyledEventLocation>
+            <StyledEventTitle className="event-title">{event.title}</StyledEventTitle>
+            <StyledEventLocation className="event-loc">
+              {`${event.city_name}, ${event.region_abbr}. ${moment(event.start_time).format('llll')}`}
+            </StyledEventLocation>
             <br />
-            <StyledEventLocation className="event-venue">{event.venue_name}</StyledEventLocation>
+            <StyledEventLocation className="event-venue">
+              {event.venue_name}
+            </StyledEventLocation>
             <br />
-            <span className="event-desc">{event.description ? convert(event.description.substring(0, 200)) : 'There is no description for this event, sorry'}</span>
+            <span className="event-desc">
+              {event.description ? convert(event.description.substring(0, 200)) : 'There is no description for this event, sorry'}
+            </span>
           </div>
           <Modal open={isClicked} onClose={this.toggleEventModal} center>
-            <h2>Test</h2>
+            <ClickedEvent></ClickedEvent>
           </Modal>
         </StyledEventInfo>
       </StyledEvent>
