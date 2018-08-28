@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import StyledEvent from '../../../assets/StyledComponents/Event/Event';
-
+import utils from '../../../assets/utils';
 
 // styled components
 import StyledImage from '../../../assets/StyledComponents/Image/Image';
@@ -11,27 +11,16 @@ import StyledEventLocation from '../../../assets/StyledComponents/EventInfo/Even
 export default class Event extends Component {
   constructor(props) {
     super(props);
-
-    // this.convertSpecialCharsToString = this.this.convertSpecialCharsToString.bind(this);
   }
 
   toggleEventModal() {
     console.log('toggling');
   }
 
-  convertSpecialCharsToString(string) {
-    let newString = string;
-    newString = newString.replace(/&quot;/ig, '"');
-    newString = newString.replace(/&lt;/ig, '<');
-    newString = newString.replace(/&gt;/ig, '>');
-    newString = newString.replace(/&amp;/ig, '&');
-    newString = newString.replace(/&#039;/ig, "'");
-    return newString;
-  }
 
   render() {
     const { event } = this.props;
-    const convert = this.convertSpecialCharsToString;
+    const convert = utils.convertSpecialCharsToString;
 
     return (
       <StyledEvent>
