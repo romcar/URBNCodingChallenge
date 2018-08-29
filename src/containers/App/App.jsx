@@ -76,9 +76,9 @@ export default class App extends Component {
     return (
       <StyledApp>
         <NavBar />
-        <SideBar />
         <Search getLoc={this.getCurrentLocation} />
-        {this.state.events ? <Events events={this.state.events} /> : null}
+        <SideBar />
+        {this.state.events ? <Events className="events" events={this.state.events} /> : null}
       </StyledApp>
     );
   }
