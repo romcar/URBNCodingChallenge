@@ -19,13 +19,19 @@ export default class App extends Component {
     super(props);
 
     this.state = {};
+    this.LocationTimer = null;
     this.getCurrentLocation = this.getCurrentLocation.bind(this);
     this.getEventsFromServer = this.getEventsFromServer.bind(this);
   }
 
   componentDidMount() {
+    console.log('hey')
     this.getCurrentLocation();
-    this.state.location ? this.getEventsFromServer() : null;
+
+    clearTimeout(this.locationTimer);
+    this.locationTimer = setTimeout(() => {
+      this.getEventsFromServer();
+    }, 75);
   }
 
   getEventsFromServer(location, ) {
@@ -43,7 +49,8 @@ export default class App extends Component {
         let events = JSON.parse(data);
         events = events.events;
         this.setState({ events });
-      });
+      })
+      .catch(error => console.error(error));
   }
 
   getCurrentLocation() {
@@ -59,16 +66,17 @@ export default class App extends Component {
         // console.log(document.getElementsByClassName('query-location'));
         document.getElementsByClassName('query-location')[0].value = "My Location";
         this.setState({ location: position });
-        this.getEventsFromServer({ location: position })
       });
     }
   }
 
   render() {
+    console.log();
+
     console.log(this.state)
     return (
       <StyledApp>
-        <NavBar />
+        {/* <NavBar /> */}
         <SideBar />
         <Search getLoc={this.getCurrentLocation} />
         {this.state.events ? <Events events={this.state.events} /> : null}

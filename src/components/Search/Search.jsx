@@ -22,7 +22,7 @@ export default class Search extends Component {
 
     this.locationTimer = setTimeout(() => {
       this.setState({ location })
-    }, 1000);
+    }, 200);
 
   }
 
