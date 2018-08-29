@@ -48,12 +48,12 @@ export default class Search extends Component {
 
   }
 
-  handleDateChange(newDate) {
-    const { date } = this.state;
-    newDate !== date ? this.setState({ newDate }) : null;
+  handleDateChange(date) {
+    this.setState({ date });
   }
 
   render() {
+    const { date } = this.state;
     return (
       <Container style={{ 'margin': 'auto' }} rows={[2, 4]} cols={[4, 17]}>
         <Fragment>
@@ -70,7 +70,7 @@ export default class Search extends Component {
 
         {/* <StyledInput> */}
         <StyledDatePicker
-          value={this.state.date}
+          value={date || new Date()}
           placeholderText="When you looking?"
           selected={this.state.date}
           onChange={this.handleDateChange}
