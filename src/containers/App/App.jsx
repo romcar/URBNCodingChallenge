@@ -25,13 +25,12 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    console.log('hey')
     this.getCurrentLocation();
 
     clearTimeout(this.locationTimer);
     this.locationTimer = setTimeout(() => {
       this.getEventsFromServer();
-    }, 75);
+    }, 100);
   }
 
   getEventsFromServer(location, ) {
@@ -76,7 +75,7 @@ export default class App extends Component {
     console.log(this.state)
     return (
       <StyledApp>
-        {/* <NavBar /> */}
+        <NavBar />
         <SideBar />
         <Search getLoc={this.getCurrentLocation} />
         {this.state.events ? <Events events={this.state.events} /> : null}

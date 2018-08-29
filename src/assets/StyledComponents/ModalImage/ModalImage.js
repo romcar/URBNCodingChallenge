@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
 export default styled.img`
-  width: 128px;
+  height: 200px;
 `;
