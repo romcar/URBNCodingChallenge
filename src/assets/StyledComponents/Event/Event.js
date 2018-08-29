@@ -3,7 +3,7 @@ import colors from '../../theme';
 
 export default styled.div`
   height: 32vh;
-  max-width: 28%;
+  max-width: 20vw;
   box-shadow: 0.25em 0.25em 0.25em ${colors.shadow};
   display: inline-block;
   margin: 0.5em 0;
@@ -14,8 +14,12 @@ export default styled.div`
   grid-template-rows: repeat(12, 1fr);
   grid-template-columns: repeat(9, 1fr);
 
+  @media screen and (max-width: 1225px) {
+    max-width: 28%;
+  }
   @media screen and (max-width: 825px) {
     max-width: 40%;
   }
+
 
   `;

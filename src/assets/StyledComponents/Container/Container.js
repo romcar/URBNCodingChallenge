@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export default styled.div`
   display: inline-block;
   position: relative;
+  margin: 0;
+  padding: 0;
 
   grid-row-start: ${props => props.rows[0]};
   grid-row-end: ${props => props.rows[1]};

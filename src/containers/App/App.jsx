@@ -55,6 +55,7 @@ export default class App extends Component {
       .then(({ data }) => {
         let events = JSON.parse(data);
         events = events.events;
+        console.log('recieved', events[0])
         this.setState({ events });
       })
       .catch(error => console.error(error));

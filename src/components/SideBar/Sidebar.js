@@ -4,7 +4,7 @@ import React from 'react';
 
 export default () => {
   return (
-    <Container id="sidebar" rows={[5, 'end']} cols={[1, 5]}>
+    <Container id="sidebar" rows={[5, 21]} cols={[1, 5]}>
       <StyledSideBar>
         Sidebar Test
       </StyledSideBar>

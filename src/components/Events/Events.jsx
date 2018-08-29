@@ -8,24 +8,30 @@ export default class Events extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      rows: [5, 'end'],
-      cols: [2, 'end']
+      rows: [5, 21],
+      cols: [2, 21]
     }
     this.shrink = this.shrink.bind(this);
     this.grow = this.grow.bind(this);
   }
 
   componentDidMount() {
-    document.getElementById('sidebar').addEventListener('mouseenter', () => { this.shrink() })
-    document.getElementById('sidebar').addEventListener('mouseleave', () => { this.grow() })
+    document.getElementById('sidebar').addEventListener('mouseenter', () => {
+      document.getElementById('events').setAttribute('width', '99%');
+      this.shrink();
+    })
+    document.getElementById('sidebar').addEventListener('mouseleave', () => {
+      document.getElementById('events').setAttribute('width', '100%');
+      this.grow();
+    })
   }
 
   shrink() {
-    this.setState({ cols: [5, 'end'] });
+    this.setState({ cols: [5, 21] });
   }
 
   grow() {
-    this.setState({ cols: [2, 'end'] });
+    this.setState({ cols: [2, 21] });
   }
 
   render() {

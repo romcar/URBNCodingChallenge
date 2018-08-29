@@ -45,29 +45,30 @@ class Event extends Component {
         </Container>
 
         <Container rows={[4, 5]} cols={[1, 10]}>
-          <StyledEventLocation style={{ 'top': '10px' }} className="event-venue">
-            {event.venue_name}
+          <StyledEventLocation style={{ 'top': '20px', "padding-left": '0' }} className="event-venue">
+            <a href={event.venue_url}>{event.venue_name}</a>
           </StyledEventLocation>
         </Container>
 
         <Container rows={[6, 8]} cols={[1, 10]}>
-          <StyledEventTitle className="event-title">{title}</StyledEventTitle>
+          <StyledEventTitle onClick={this.toggleEventModal} className="event-title">{title}</StyledEventTitle>
         </Container>
 
         <Container rows={[1, 2]} cols={[5, 10]}>
           <StyledEventLocation className="event-loc">
             {`${event.city_name}, ${event.region_abbr}.`}
             <br />
-            {`${time.date_short}  ${time.time}`}
+            <span>{`${time.date_short}`}</span>
             <br />
-            {`${time.time}`}
+            <span>{`${time.time}`}</span>
           </StyledEventLocation>
         </Container>
-        {/*
 
-          <span className="event-desc">
+        <Container rows={[8, 13]} cols={[1, 10]}>
+          <span onClick={this.toggleEventModal} className="event-desc">
             {event.description ? convert(event.description.substring(0, 175) + "...") : 'There is no description for this event, sorry'}
-          </span> */}
+          </span>
+        </Container>
         <Modal open={isClicked} onClose={this.toggleEventModal} center>
           <ClickedEvent {...event}></ClickedEvent>
         </Modal>

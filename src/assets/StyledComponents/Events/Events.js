@@ -4,9 +4,9 @@ import colors from '../../theme';
 export default styled.div`
   background: ${colors.white};
   border: 1px solid ${colors.sidebar};
-  height: 100%;
+  height: 100vh;
   width: 100%;
   padding: 1em;
-  max-height: 75vh;
   overflow: scroll;
+  transition: width 0.34s;
 `;
