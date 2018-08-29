@@ -1,11 +1,12 @@
 import Modal from 'react-responsive-modal';
 import moment from 'moment';
 import React, { Component } from 'react';
-import StyledEvent from '../../../assets/StyledComponents/Event/Event';
 import utils from '../../../assets/utils';
 
 // styled components
+import Container from '../../../assets/StyledComponents/Container/Container';
 import StyledImage from '../../../assets/StyledComponents/Image/Image';
+import StyledEvent from '../../../assets/StyledComponents/Event/Event';
 import StyledEventInfo from '../../../assets/StyledComponents/EventInfo/EventInfo';
 import StyledEventTitle from '../../../assets/StyledComponents/EventInfo/EventTitle';
 import StyledEventLocation from '../../../assets/StyledComponents/EventInfo/EventLocation';
@@ -34,31 +35,43 @@ class Event extends Component {
     const { event } = this.props;
     const { isClicked } = this.state;
     const convert = utils.convertSpecialCharsToString;
+    const time = utils.formatTime(event.start_time);
+    const title = utils.shortenStringByType("title", event.title);
 
     return (
-      <StyledEvent className="event">
-        <StyledEventInfo className="event-item">
-          <div className="event-image" onClick={this.toggleEventModal}>
-            {event.image ? <StyledImage src={event.image.medium.url} /> : null}
-          </div>
-          <div className="event-info">
-            <StyledEventTitle className="event-title">{event.title}</StyledEventTitle>
-            <StyledEventLocation className="event-loc">
-              {`${event.city_name}, ${event.region_abbr}. ${moment(event.start_time).format('llll')}`}
-            </StyledEventLocation>
+      <StyledEvent className="event event-item event-info">
+        <Container rows={[1, 4]} cols={[1, 4]}>
+          {event.image ? <StyledImage src={event.image.medium.url} className="event-image" onClick={this.toggleEventModal} /> : null}
+        </Container>
+
+        <Container rows={[4, 5]} cols={[1, 10]}>
+          <StyledEventLocation style={{ 'top': '10px' }} className="event-venue">
+            {event.venue_name}
+          </StyledEventLocation>
+        </Container>
+
+        <Container rows={[6, 8]} cols={[1, 10]}>
+          <StyledEventTitle className="event-title">{title}</StyledEventTitle>
+        </Container>
+
+        <Container rows={[1, 2]} cols={[5, 10]}>
+          <StyledEventLocation className="event-loc">
+            {`${event.city_name}, ${event.region_abbr}.`}
             <br />
-            <StyledEventLocation className="event-venue">
-              {event.venue_name}
-            </StyledEventLocation>
+            {`${time.date_short}  ${time.time}`}
             <br />
-            <span className="event-desc">
-              {event.description ? convert(event.description.substring(0, 175) + "...") : 'There is no description for this event, sorry'}
-            </span>
-          </div>
-          <Modal open={isClicked} onClose={this.toggleEventModal} center>
-            <ClickedEvent {...event}></ClickedEvent>
-          </Modal>
-        </StyledEventInfo>
+            {`${time.time}`}
+          </StyledEventLocation>
+        </Container>
+        {/*
+
+          <span className="event-desc">
+            {event.description ? convert(event.description.substring(0, 175) + "...") : 'There is no description for this event, sorry'}
+          </span> */}
+        <Modal open={isClicked} onClose={this.toggleEventModal} center>
+          <ClickedEvent {...event}></ClickedEvent>
+        </Modal>
+        {/* </StyledEventInfo> */}
       </StyledEvent>
     );
   };

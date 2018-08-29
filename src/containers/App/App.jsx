@@ -30,7 +30,7 @@ export default class App extends Component {
     clearTimeout(this.locationTimer);
     this.locationTimer = setTimeout(() => {
       this.getEventsFromServer();
-    }, 100);
+    }, 300);
   }
 
   getEventsFromServer(location, ) {

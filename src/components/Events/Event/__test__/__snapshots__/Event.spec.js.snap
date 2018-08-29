@@ -2,176 +2,227 @@
 
 exports[`Event Component Should render component 1`] = `
 <styled.div
-  className="event"
+  className="event event-item event-info"
 >
   <styled.div
-    className="event-item"
+    cols={
+      Array [
+        1,
+        4,
+      ]
+    }
+    rows={
+      Array [
+        1,
+        4,
+      ]
+    }
   >
-    <div
+    <styled.img
       className="event-image"
       onClick={[Function]}
-    >
-      <styled.img
-        src="http://d1marr3m5x4iac.cloudfront.net/images/medium/I0-001/003/948/039-3.jpeg_/sugarland-39.jpeg"
-      />
-    </div>
-    <div
-      className="event-info"
-    >
-      <styled.h4
-        className="event-title"
-      >
-        Sugarland
-      </styled.h4>
-      <styled.span
-        className="event-loc"
-      >
-        Philadelphia, PA. Sun, Sep 9, 2018 7:00 PM
-      </styled.span>
-      <br />
-      <styled.span
-        className="event-venue"
-      >
-        Mann Center for the Performing Arts
-      </styled.span>
-      <br />
-      <span
-        className="event-desc"
-      >
-        There once was a description here but no more. Actually there was no description and a story had to be told. He picked up the watter bottle, took a sip, and put it down. Then ...
-      </span>
-    </div>
-    <Modal
-      animationDuration={500}
-      blockScroll={true}
-      center={true}
-      classNames={Object {}}
-      classes={
+      src="http://d1marr3m5x4iac.cloudfront.net/images/medium/I0-001/003/948/039-3.jpeg_/sugarland-39.jpeg"
+    />
+  </styled.div>
+  <styled.div
+    cols={
+      Array [
+        1,
+        10,
+      ]
+    }
+    rows={
+      Array [
+        4,
+        5,
+      ]
+    }
+  >
+    <styled.span
+      className="event-venue"
+      style={
         Object {
-          "closeButton": "styles_closeButton__20ID4",
-          "closeIcon": "styles_closeIcon__1QwbI",
-          "modal": "styles_modal__gNwvD",
-          "overlay": "styles_overlay__CLSq-",
-          "overlayCenter": "styles_overlayCenter__YHoO7",
-          "transitionEnter": "styles_transitionEnter__3j_-a",
-          "transitionEnterActive": "styles_transitionEnterActive___eQs7",
-          "transitionExit": "styles_transitionExit__1KmEf",
-          "transitionExitActive": "styles_transitionExitActive__1nQXw",
+          "top": "10px",
         }
       }
-      closeIconSize={28}
-      closeIconSvgPath={
-        <path
-          d="M28.5 9.62L26.38 7.5 18 15.88 9.62 7.5 7.5 9.62 15.88 18 7.5 26.38l2.12 2.12L18 20.12l8.38 8.38 2.12-2.12L20.12 18z"
-        />
-      }
-      closeOnEsc={true}
-      closeOnOverlayClick={true}
-      onClose={[Function]}
-      onEntered={null}
-      onEscKeyDown={null}
-      onExited={null}
-      onOverlayClick={null}
-      open={false}
-      showCloseIcon={true}
-      styles={Object {}}
     >
-      <_default
-        all_day="0"
-        calendar_count={null}
-        calendars={null}
-        city_name="Philadelphia"
-        comment_count={null}
-        country_abbr="USA"
-        country_abbr2="US"
-        country_name="United States"
-        created="2018-03-05 20:30:22"
-        description="There once was a description here but no more. Actually there was no description and a story had to be told. He picked up the watter bottle, took a sip, and put it down. Then immediately took a drag of his cigarette to calm his nerves. The sun set in the east and the moon came up shortly after. I hope this is 200 + characters. Let's find out."
-        geocode_type="EVDB Geocoder"
-        going={null}
-        going_count={null}
-        groups={null}
-        id="E0-001-1234567890-9"
-        image={
-          Object {
-            "caption": null,
+      Mann Center for the Performing Arts
+    </styled.span>
+  </styled.div>
+  <styled.div
+    cols={
+      Array [
+        1,
+        10,
+      ]
+    }
+    rows={
+      Array [
+        6,
+        8,
+      ]
+    }
+  >
+    <styled.h4
+      className="event-title"
+    >
+      Sugarland
+    </styled.h4>
+  </styled.div>
+  <styled.div
+    cols={
+      Array [
+        5,
+        10,
+      ]
+    }
+    rows={
+      Array [
+        1,
+        2,
+      ]
+    }
+  >
+    <styled.span
+      className="event-loc"
+    >
+      Philadelphia, PA.
+      <br />
+      9/9/2018  7:00 PM
+      <br />
+      7:00 PM
+    </styled.span>
+  </styled.div>
+  <Modal
+    animationDuration={500}
+    blockScroll={true}
+    center={true}
+    classNames={Object {}}
+    classes={
+      Object {
+        "closeButton": "styles_closeButton__20ID4",
+        "closeIcon": "styles_closeIcon__1QwbI",
+        "modal": "styles_modal__gNwvD",
+        "overlay": "styles_overlay__CLSq-",
+        "overlayCenter": "styles_overlayCenter__YHoO7",
+        "transitionEnter": "styles_transitionEnter__3j_-a",
+        "transitionEnterActive": "styles_transitionEnterActive___eQs7",
+        "transitionExit": "styles_transitionExit__1KmEf",
+        "transitionExitActive": "styles_transitionExitActive__1nQXw",
+      }
+    }
+    closeIconSize={28}
+    closeIconSvgPath={
+      <path
+        d="M28.5 9.62L26.38 7.5 18 15.88 9.62 7.5 7.5 9.62 15.88 18 7.5 26.38l2.12 2.12L18 20.12l8.38 8.38 2.12-2.12L20.12 18z"
+      />
+    }
+    closeOnEsc={true}
+    closeOnOverlayClick={true}
+    onClose={[Function]}
+    onEntered={null}
+    onEscKeyDown={null}
+    onExited={null}
+    onOverlayClick={null}
+    open={false}
+    showCloseIcon={true}
+    styles={Object {}}
+  >
+    <_default
+      all_day="0"
+      calendar_count={null}
+      calendars={null}
+      city_name="Philadelphia"
+      comment_count={null}
+      country_abbr="USA"
+      country_abbr2="US"
+      country_name="United States"
+      created="2018-03-05 20:30:22"
+      description="There once was a description here but no more. Actually there was no description and a story had to be told. He picked up the watter bottle, took a sip, and put it down. Then immediately took a drag of his cigarette to calm his nerves. The sun set in the east and the moon came up shortly after. I hope this is 200 + characters. Let's find out."
+      geocode_type="EVDB Geocoder"
+      going={null}
+      going_count={null}
+      groups={null}
+      id="E0-001-1234567890-9"
+      image={
+        Object {
+          "caption": null,
+          "height": "48",
+          "medium": Object {
+            "height": "128",
+            "url": "http://d1marr3m5x4iac.cloudfront.net/images/medium/I0-001/003/948/039-3.jpeg_/sugarland-39.jpeg",
+            "width": "128",
+          },
+          "small": Object {
             "height": "48",
-            "medium": Object {
-              "height": "128",
-              "url": "http://d1marr3m5x4iac.cloudfront.net/images/medium/I0-001/003/948/039-3.jpeg_/sugarland-39.jpeg",
-              "width": "128",
-            },
-            "small": Object {
-              "height": "48",
-              "url": "http://d1marr3m5x4iac.cloudfront.net/images/small/I0-001/003/948/039-3.jpeg_/sugarland-39.jpeg",
-              "width": "48",
-            },
-            "thumb": Object {
-              "height": "48",
-              "url": "http://d1marr3m5x4iac.cloudfront.net/images/thumb/I0-001/003/948/039-3.jpeg_/sugarland-39.jpeg",
-              "width": "48",
-            },
             "url": "http://d1marr3m5x4iac.cloudfront.net/images/small/I0-001/003/948/039-3.jpeg_/sugarland-39.jpeg",
             "width": "48",
-          }
+          },
+          "thumb": Object {
+            "height": "48",
+            "url": "http://d1marr3m5x4iac.cloudfront.net/images/thumb/I0-001/003/948/039-3.jpeg_/sugarland-39.jpeg",
+            "width": "48",
+          },
+          "url": "http://d1marr3m5x4iac.cloudfront.net/images/small/I0-001/003/948/039-3.jpeg_/sugarland-39.jpeg",
+          "width": "48",
         }
-        latitude="39.9833256"
-        link_count={null}
-        longitude="-75.2229687"
-        modified="2018-05-01 17:53:35"
-        olson_path="America/New_York"
-        owner="evdb"
-        performers={
-          Object {
-            "performer": Array [
-              Object {
-                "creator": "girlillamarketing",
-                "id": "P0-001-000009665-3",
-                "linker": "evdb",
-                "name": "Sugarland",
-                "short_bio": "Country / Pop",
-                "url": "http://concerts.eventful.com/performers/sugarland-/P0-001-000009665-3?utm_source=apis&utm_medium=apim&utm_campaign=apic",
-              },
-              Object {
-                "creator": "BBRMusicGroup",
-                "id": "P0-001-000140403-5",
-                "linker": "evdb",
-                "name": "Lindsay Ell",
-                "short_bio": "Stoney Creek Recording Artist Linday Ell",
-                "url": "http://concerts.eventful.com/Lindsay-Ell?utm_source=apis&utm_medium=apim&utm_campaign=apic",
-              },
-              Object {
-                "creator": "kateroeder",
-                "id": "P0-001-000215447-4",
-                "linker": "evdb",
-                "name": "Frankie Ballard",
-                "short_bio": "Country",
-                "url": "http://concerts.eventful.com/Frankie-Ballard?utm_source=apis&utm_medium=apim&utm_campaign=apic",
-              },
-            ],
-          }
+      }
+      latitude="39.9833256"
+      link_count={null}
+      longitude="-75.2229687"
+      modified="2018-05-01 17:53:35"
+      olson_path="America/New_York"
+      owner="evdb"
+      performers={
+        Object {
+          "performer": Array [
+            Object {
+              "creator": "girlillamarketing",
+              "id": "P0-001-000009665-3",
+              "linker": "evdb",
+              "name": "Sugarland",
+              "short_bio": "Country / Pop",
+              "url": "http://concerts.eventful.com/performers/sugarland-/P0-001-000009665-3?utm_source=apis&utm_medium=apim&utm_campaign=apic",
+            },
+            Object {
+              "creator": "BBRMusicGroup",
+              "id": "P0-001-000140403-5",
+              "linker": "evdb",
+              "name": "Lindsay Ell",
+              "short_bio": "Stoney Creek Recording Artist Linday Ell",
+              "url": "http://concerts.eventful.com/Lindsay-Ell?utm_source=apis&utm_medium=apim&utm_campaign=apic",
+            },
+            Object {
+              "creator": "kateroeder",
+              "id": "P0-001-000215447-4",
+              "linker": "evdb",
+              "name": "Frankie Ballard",
+              "short_bio": "Country",
+              "url": "http://concerts.eventful.com/Frankie-Ballard?utm_source=apis&utm_medium=apim&utm_campaign=apic",
+            },
+          ],
         }
-        postal_code="19131"
-        privacy="1"
-        recur_string={null}
-        region_abbr="PA"
-        region_name="Pennsylvania"
-        start_time="2018-09-09 19:00:00"
-        stop_time={null}
-        title="Sugarland"
-        tz_city={null}
-        tz_country={null}
-        tz_id={null}
-        tz_olson_path={null}
-        url="this/is/the/url/for/the/event"
-        venue_address="5201 Parkside Avenue"
-        venue_display="1"
-        venue_id="V0-001-000282568-8"
-        venue_name="Mann Center for the Performing Arts"
-        venue_url="http://philadelphia.eventful.com/venues/mann-center-for-the-performing-arts-/V0-001-000282568-8?utm_source=apis&utm_medium=apim&utm_campaign=apic"
-        watching_count={null}
-      />
-    </Modal>
-  </styled.div>
+      }
+      postal_code="19131"
+      privacy="1"
+      recur_string={null}
+      region_abbr="PA"
+      region_name="Pennsylvania"
+      start_time="2018-09-09 19:00:00"
+      stop_time={null}
+      title="Sugarland"
+      tz_city={null}
+      tz_country={null}
+      tz_id={null}
+      tz_olson_path={null}
+      url="this/is/the/url/for/the/event"
+      venue_address="5201 Parkside Avenue"
+      venue_display="1"
+      venue_id="V0-001-000282568-8"
+      venue_name="Mann Center for the Performing Arts"
+      venue_url="http://philadelphia.eventful.com/venues/mann-center-for-the-performing-arts-/V0-001-000282568-8?utm_source=apis&utm_medium=apim&utm_campaign=apic"
+      watching_count={null}
+    />
+  </Modal>
 </styled.div>
 `;

@@ -9,5 +9,4 @@ export default styled.div`
   padding: 1em;
   max-height: 75vh;
   overflow: scroll;
-  transition: all 0.33s;
 `;
