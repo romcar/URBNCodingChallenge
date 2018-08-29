@@ -11,9 +11,6 @@ import NavBar from '../../components/NavBar/NavBar';
 import Search from '../../components/Search/Search';
 import Events from '../../components/Events/Events';
 
-// temp imports
-import data from '../../../seed';
-
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -25,14 +22,9 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    this.getCurrentLocation();
-
-    // clearTimeout(this.locationTimer);
-    // this.locationTimer = setTimeout(() => {
     this.getEventsFromServer({
       url: 'http://localhost:3000/default'
     });
-    // }, 300);
   }
 
   getEventsFromServer({ url, location }) {

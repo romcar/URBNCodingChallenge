@@ -7,7 +7,7 @@ import utils from '../../../assets/utils';
 import Container from '../../../assets/StyledComponents/Container/Container';
 import StyledImage from '../../../assets/StyledComponents/Image/Image';
 import StyledEvent from '../../../assets/StyledComponents/Event/Event';
-import StyledEventInfo from '../../../assets/StyledComponents/EventInfo/EventInfo';
+// import StyledEventInfo from '../../../assets/StyledComponents/EventInfo/EventInfo';
 import StyledEventTitle from '../../../assets/StyledComponents/EventInfo/EventTitle';
 import StyledEventLocation from '../../../assets/StyledComponents/EventInfo/EventLocation';
 
@@ -45,7 +45,7 @@ class Event extends Component {
         </Container>
 
         <Container rows={[4, 5]} cols={[1, 10]}>
-          <StyledEventLocation style={{ 'top': '20px', "padding-left": '0' }} className="event-venue">
+          <StyledEventLocation style={{ 'top': '20px', "paddingLeft": '0' }} className="event-venue">
             <a href={event.venue_url}>{event.venue_name}</a>
           </StyledEventLocation>
         </Container>
