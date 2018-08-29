@@ -4,6 +4,7 @@ const request = require('request');
 const parseQueryString = require('./utils/parseQuery');
 
 const getDefaultEvents = (callback) => {
+  console.log('4a) Setting up the request ');
   let defaultQuery = {
     keywords: 'music',
     time: 'this week'
@@ -17,19 +18,23 @@ const getDefaultEvents = (callback) => {
     },
     "url": `http://api.eventful.com/json/events/search${qs}`
   }
-  console.log(qs, '~~~~~~~~~~~~~~~~~~~~~~~~~');
+  // console.log(qs, '~~~~~~~~~~~~~~~~~~~~~~~~~');
 
+  console.log('5a) Asking for the information');
   request(options, (err, response, body) => {
+    console.log('6a) Searching for the information');
     if (err) {
       console.error(err);
     }
 
+    console.log('!!!!! Saving the information into cache');
     cache.put('default', JSON.stringify(body), 3600000, (key) => {
       console.log('Refreshing default records');
       getDefaultEvents();
     });
 
     if (callback) {
+      console.log("Did you callback???");
       callback(JSON.stringify(body))
     }
 
@@ -42,10 +47,13 @@ const getDefaultEvents = (callback) => {
 
 router.route('/default')
   .get((req, res) => {
+    console.log('1a) Recieved request [DEFAULT]');
     let events = cache.get('default');
     if (events) {
+      console.log('2a) The cache has got this :D');
       res.status(200).send(events)
     } else {
+      console.log("3) Gunna go searching for this, brb");
       getDefaultEvents((events) => {
         res.status(200).send(events)
       });
