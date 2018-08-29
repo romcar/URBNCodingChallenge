@@ -11,6 +11,8 @@ router.route('/search')
 
     let prevRecord = cache.get(qs);
 
+    // if a request at this qs was already made
+    // within the past 5 minutes
     if (prevRecord) {
       res.status(200).send(prevRecord);
     }
@@ -25,14 +27,14 @@ router.route('/search')
     };
     request(options, (err, response, body) => {
       if (err) {
-        res.statusCode(404).send(err);
+        res.status(404).send(err);
       }
-      console.log(body)
-      cache.put(qs, JSON.stringify(body), 300000, (k, v) => {
+      console.log('Events put in cache')
+      cache.put(qs, JSON.stringify(body), 300000, (k) => {
         console.log(k, 'was removed.');
       });
 
-      res.end(JSON.stringify(body));
+      res.status(200).end(JSON.stringify(body));
     });
   });
 
