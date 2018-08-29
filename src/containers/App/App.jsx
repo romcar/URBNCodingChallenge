@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import './App.css';
 
@@ -19,17 +20,34 @@ export default class App extends Component {
 
     this.state = {};
     this.getCurrentLocation = this.getCurrentLocation.bind(this);
+    this.getEventsFromServer = this.getEventsFromServer.bind(this);
   }
 
   componentDidMount() {
-    if (this.state.location) {
+    this.getCurrentLocation();
+    this.state.location ? this.getEventsFromServer() : null;
+  }
 
-    }
+  getEventsFromServer(location, ) {
+    let { lat, lng } = this.state.location;
+    let loc = location || null;
+
+    (!!lat & !!lng) ? loc = [lat, lng] : null;
+    console.log('Client location: ', loc)
+    axios.get('http://localhost:3000/search', {
+      params: {
+        location: loc
+      }
+    })
+      .then(({ data }) => {
+        let events = JSON.parse(data);
+        events = events.events;
+        this.setState({ events });
+      });
   }
 
   getCurrentLocation() {
     // Trying HTML 5 geolocation
-
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((pos) => {
         const position = {
@@ -37,19 +55,23 @@ export default class App extends Component {
           lng: pos.coords.longitude,
           timeOfLocation: new Date()
         };
-        console.log(position);
-
+        // console.log(position);
+        // console.log(document.getElementsByClassName('query-location'));
+        document.getElementsByClassName('query-location')[0].value = "My Location";
         this.setState({ location: position });
+        this.getEventsFromServer({ location: position })
       });
     }
   }
+
   render() {
+    console.log(this.state)
     return (
       <StyledApp>
         <NavBar />
         <SideBar />
         <Search getLoc={this.getCurrentLocation} />
-        <Events events={data.events} />
+        {this.state.events ? <Events events={this.state.events} /> : null}
       </StyledApp>
     );
   }

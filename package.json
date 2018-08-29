@@ -6,7 +6,7 @@
   "scripts": {
     "test": "NODE_ENV=test jest --watch",
     "start": "webpack-dev-server --config webpack.config.dev.js",
-    "server": "google-chrome http://localhost:3000 && node server/serverConnection.js",
+    "server": "nodemon --inspect server/serverConnection.js",
     "lint": "eslint ."
   },
   "jest": {
@@ -35,7 +35,9 @@
   },
   "homepage": "https://github.com/romcar/URBNCodingChallenge#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-jest": "^23.4.2",
+    "memory-cache": "^0.2.0",
     "moment": "^2.22.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",

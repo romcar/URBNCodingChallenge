@@ -37,11 +37,10 @@ export default class Search extends Component {
 
   }
   render() {
-    console.log(this.state)
     return (
       <Container rows={[3, 4]} cols={[6, 17]}>
         <StyledSearch>
-          <StyledInput type="text" placeholder="Location" onClick={this.props.getLoc} onChange={this.handleLocationChange} />
+          <StyledInput className='query-location' type="text" placeholder="Location" onClick={this.props.getLoc} onChange={this.handleLocationChange} />
           <StyledInput type="text" placeholder="Find" onChange={this.handleQueryChange} />
           <button>Search</button>
         </StyledSearch>
