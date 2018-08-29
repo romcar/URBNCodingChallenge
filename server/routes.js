@@ -2,6 +2,56 @@ const cache = require('memory-cache');
 const router = require('express').Router();
 const request = require('request');
 const parseQueryString = require('./utils/parseQuery');
+
+const getDefaultEvents = (callback) => {
+  let defaultQuery = {
+    keywords: 'music',
+    time: 'this week'
+  }
+
+  let qs = parseQueryString(defaultQuery);
+  let options = {
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    "url": `http://api.eventful.com/json/events/search${qs}`
+  }
+  console.log(qs, '~~~~~~~~~~~~~~~~~~~~~~~~~');
+
+  request(options, (err, response, body) => {
+    if (err) {
+      console.error(err);
+    }
+
+    cache.put('default', JSON.stringify(body), 3600000, (key) => {
+      console.log('Refreshing default records');
+      getDefaultEvents();
+    });
+
+    if (callback) {
+      callback(JSON.stringify(body))
+    }
+
+  });
+};
+
+(() => {
+  getDefaultEvents();
+})()
+
+router.route('/default')
+  .get((req, res) => {
+    let events = cache.get('default');
+    if (events) {
+      res.status(200).send(events)
+    } else {
+      getDefaultEvents((events) => {
+        res.status(200).send(events)
+      });
+    }
+  })
+
 router.route('/search')
   .get((req, res) => {
     console.log(req.query);

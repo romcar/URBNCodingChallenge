@@ -1,5 +1,5 @@
 module.exports = (location) => {
-  let result = 'l=';
+  let result = '&l=';
 
   // if it is a zipcode
   if (!isNaN(location) && typeof Number(location) === 'number' && location.length === 5) {

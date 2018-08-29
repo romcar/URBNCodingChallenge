@@ -27,19 +27,27 @@ export default class App extends Component {
   componentDidMount() {
     this.getCurrentLocation();
 
-    clearTimeout(this.locationTimer);
-    this.locationTimer = setTimeout(() => {
-      this.getEventsFromServer();
-    }, 300);
+    // clearTimeout(this.locationTimer);
+    // this.locationTimer = setTimeout(() => {
+    this.getEventsFromServer({
+      url: 'http://localhost:3000/default'
+    });
+    // }, 300);
   }
 
-  getEventsFromServer(location, ) {
-    let { lat, lng } = this.state.location;
+  getEventsFromServer({ url, location }) {
+    let lat, lng;
+    if (this.state.location && this.state.location.lat && this.state.location.lng) {
+      lat = { lat } = this.state.location;
+      lng = { lng } = this.state.location;
+    }
+    console.log('these are the coords: ', lat, lng)
     let loc = location || null;
 
     (!!lat & !!lng) ? loc = [lat, lng] : null;
-    console.log('Client location: ', loc)
-    axios.get('http://localhost:3000/search', {
+    console.log('Client location: ', loc);
+
+    axios.get(url, {
       params: {
         location: loc
       }
@@ -59,10 +67,8 @@ export default class App extends Component {
         const position = {
           lat: pos.coords.latitude,
           lng: pos.coords.longitude,
-          timeOfLocation: new Date()
         };
-        // console.log(position);
-        // console.log(document.getElementsByClassName('query-location'));
+
         document.getElementsByClassName('query-location')[0].value = "My Location";
         this.setState({ location: position });
       });
