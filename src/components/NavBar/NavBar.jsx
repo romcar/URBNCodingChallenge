@@ -3,8 +3,7 @@ import StyledNavBar from '../../assets/StyledComponents/NavBar/NavBar';
 
 export default () => {
   return (
-    <StyledNavBar>
-      Nav Bar Testing
+    <StyledNavBar className="nav-bar">
     </StyledNavBar>
   )
 }

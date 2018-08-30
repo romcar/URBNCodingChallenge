@@ -19,4 +19,22 @@ export default styled.div`
     width: 20vw;
     grid-column-end: 5;
   }
+
+  & > ul {
+    margin: auto;
+    font-size: 1.5rem;
+    text-decoration: none;
+
+    & > li a {
+      color: ${colors.white};
+      padding: 0.5rem;
+      font-size: 1.5rem;
+
+    &:hover {
+      color: ${colors["link--hover"]};
+      }
+    }
+  }
+
+
 `;

@@ -1,31 +1,38 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import './App.css';
+import Spinner from '../../assets/images/spinner.png';
+
 
 // styled components
 import StyledApp from './StyledApp';
 
 // Components
 import Events from '../../components/Events/Events';
-import SideBar from '../../components/SideBar/Sidebar';
-import Search from '../../components/Search/Search';
 import NavBar from '../../components/NavBar/NavBar';
 import PaginatorControls from '../../components/PaginatorControls/PaginatorControls';
+import SideBar from '../../components/SideBar/Sidebar';
+import Search from '../../components/Search/Search';
+import StyledSpinner from '../../assets/StyledComponents/Spinner/Spinner';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      useCoords: false
+      useCoords: false,
+      previouslyClickedEvents: []
     };
 
-    this.LocationTimer = null;
+    this.addEventToSideBar = this.addEventToSideBar.bind(this);
     this.getCurrentLocation = this.getCurrentLocation.bind(this);
     this.getEventsFromServer = this.getEventsFromServer.bind(this);
-    this.shouldUseTheCoordinates = this.shouldUseTheCoordinates.bind(this);
     this.getNextPage = this.getNextPage.bind(this);
     this.getPrevPage = this.getPrevPage.bind(this);
+    this.LocationTimer = null;
+    this.shouldUseTheCoordinates = this.shouldUseTheCoordinates.bind(this);
+    this.startSpinner = this.startSpinner.bind(this);
+    this.stopSpinner = this.stopSpinner.bind(this);
   }
 
   componentDidMount() {
@@ -36,6 +43,7 @@ export default class App extends Component {
   }
 
   getEventsFromServer({ url, location, time, keywords, page_number }) {
+    this.startSpinner();
     let loc;
 
     if (this.state.useCoords) {
@@ -49,8 +57,6 @@ export default class App extends Component {
 
     page_number = page_number ? page_number : this.state.page_number ? this.state.page_number : 1;
 
-    console.log('Client location: ', loc, page_number);
-    console.log(loc)
     axios.get(url, {
       params: {
         location: loc,
@@ -61,20 +67,54 @@ export default class App extends Component {
     })
       .then(({ data }) => {
         let parsedData = JSON.parse(data);
-        let { events, page_number, total_items, page_size } = parsedData;
-        console.log('recieved', events)
-        this.setState({ events, time, location: loc, keywords, page_number, total_items, page_size });
+        let { events, page_number, page_count, page_size } = parsedData;
+        this.stopSpinner();
+        console.log(parsedData);
+
+        this.setState({
+          events,
+          time,
+          location: loc,
+          keywords,
+          page_number,
+          page_count,
+          page_size
+        });
       })
       .catch(error => console.error(error));
   }
 
+  startSpinner() {
+    console.log('starting spinner')
+    document.getElementById('spinner').style.display = 'inline-block';
+  }
+
+  stopSpinner() {
+    document.getElementById('spinner').style.display = 'none';
+  }
+
+  addEventToSideBar({ title, url, id }) {
+    let eventObj = {
+      title, url, id
+    }
+
+    eventObj.title = eventObj.title.substr(0, 23);
+
+    const prevItems = this.state.previouslyClickedEvents;
+    this.setState({ previouslyClickedEvents: prevItems.concat(eventObj) })
+  }
+
   getNextPage() {
-    let { page_number, location, time, keywords } = this.state;
+    let { page_number, location, time, keywords, page_count } = this.state;
+
     page_number = Number(page_number) + 1;
+    if (page_number > page_count) {
+      page_number = 1;
+    }
+    console.log(page_number <= Number(page_count), page_number, page_count);
 
-    let maxPageCount = Math.ceil(this.state.total_items / this.state.page_size);
-
-    if (page_number < maxPageCount) {
+    if (page_number <= Number(page_count)) {
+      console.log('hey')
       this.getEventsFromServer({
         url: '/search',
         location,
@@ -83,7 +123,13 @@ export default class App extends Component {
         page_number
       });
     } else {
-      console.log('display error 2')
+      this.getEventsFromServer({
+        url: '/search',
+        location,
+        time,
+        keywords,
+        page_number: 1
+      });
     }
   };
 
@@ -100,7 +146,13 @@ export default class App extends Component {
         page_number
       });
     } else {
-      console.log('display error')
+      this.getEventsFromServer({
+        url: '/search',
+        location,
+        time,
+        keywords,
+        page_number: this.state.page_count
+      });
     }
   }
 
@@ -149,10 +201,17 @@ export default class App extends Component {
           getEvents={this.getEventsFromServer}
         />
         <PaginatorControls
+          page_number={this.state.page_number}
           next={this.getNextPage}
           prev={this.getPrevPage} />
-        <SideBar />
-        {this.state.events ? <Events className="events" events={this.state.events} /> : null}
+        <SideBar prevClickedEvents={this.state.previouslyClickedEvents} />
+        {this.state.events ?
+          <Events
+            saveToSidebar={this.addEventToSideBar}
+            className="events"
+            events={this.state.events}
+          /> : null}
+        <StyledSpinner id='spinner' src={Spinner} hidden />
       </StyledApp>
     );
   }

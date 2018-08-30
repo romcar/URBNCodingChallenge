@@ -8,7 +8,7 @@ export default class Events extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      rows: [5, 21],
+      rows: [6, 21],
       cols: [2, 21]
     }
     this.shrink = this.shrink.bind(this);
@@ -38,8 +38,9 @@ export default class Events extends Component {
     const { rows, cols } = this.state;
     return (
       <Container id="events" rows={rows} cols={cols}>
-        <StyledEvents>
-          {this.props.events.event.map(evnt => <Event key={evnt.id} event={evnt} />)}
+        <StyledEvents
+          style={{ height: '100vh' }}>
+          {this.props.events.event.map(evnt => <Event saveToSidebar={this.props.saveToSidebar} key={evnt.id} event={evnt} />)}
         </StyledEvents>
       </Container>
     );

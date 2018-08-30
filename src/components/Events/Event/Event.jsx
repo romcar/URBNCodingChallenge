@@ -1,5 +1,4 @@
 import Modal from 'react-responsive-modal';
-import moment from 'moment';
 import React, { Component } from 'react';
 // const ReactMarkdown = require('react-markdown')
 import showdown from 'showdown';
@@ -46,6 +45,7 @@ class Event extends Component {
     const convert = utils.convertSpecialCharsToString;
     const time = utils.formatTime(event.start_time);
     const title = utils.shortenStringByType("title", event.title);
+    const saveToSide = this.props.saveToSidebar.bind(this);
 
     return (
       <StyledEvent className="event event-item event-info">
@@ -53,7 +53,10 @@ class Event extends Component {
           <StyledImage
             src={event.image ? event.image.medium ? event.image.medium.url : 'https://via.placeholder.com/50x50' : 'https://via.placeholder.com/50x50'}
             className="event-image"
-            onClick={this.toggleEventModal}
+            onClick={() => {
+              this.toggleEventModal();
+              this.props.saveToSidebar(event);
+            }}
           />
         </Container>
 
@@ -79,7 +82,6 @@ class Event extends Component {
 
         <Container rows={[8, 13]} cols={[1, 10]}>
           <StyledDescription dangerouslySetInnerHTML={this.createMarkUp()} onClick={this.toggleEventModal} id="event-desc" >
-            {/* {event.description ? converter.makeHtml(convert(event.description.substring(0, 175) + "...")) : 'There is no description for this event, sorry'} */}
           </StyledDescription>
         </Container>
         <Modal open={isClicked} onClose={this.toggleEventModal} center>

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export default styled.div`
   overflow: scroll;
   overflow-y: scroll;
-  height: 30vh;
+  height: 40vh;
   padding: 1em;
   grid-row-start: 9;
   grid-row-end: 15;

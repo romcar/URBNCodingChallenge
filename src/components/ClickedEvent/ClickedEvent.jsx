@@ -22,7 +22,6 @@ export default (props) => {
   let desc = props.description ? utils.convertSpecialCharsToString(props.description) : null;
   const createMarkUp = () => {
     desc = props.description ? converter.makeHtml(props.description) : "Check out Evently for more information!";
-    console.log(desc);
     return { __html: desc }
   }
 
