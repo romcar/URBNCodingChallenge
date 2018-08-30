@@ -10,7 +10,7 @@ bin-release/
 # for this project
 
 /node_modules/
-/public/
+/public/src/*
 config.js
 
 # Executables
