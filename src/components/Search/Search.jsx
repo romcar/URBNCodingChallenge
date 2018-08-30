@@ -56,7 +56,7 @@ export default class Search extends Component {
   render() {
     const { date } = this.state;
     return (
-      <Container style={{ 'margin': 'auto' }} rows={[2, 4]} cols={[4, 17]}>
+      <Container style={{ 'margin': 'auto' }} rows={[2, 4]} cols={[5, 18]}>
         <Fragment>
           <StyledInput
             style={{ 'borderRadius': '0.5em 0 0 0.5em' }}

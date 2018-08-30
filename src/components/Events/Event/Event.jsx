@@ -1,6 +1,8 @@
 import Modal from 'react-responsive-modal';
 import moment from 'moment';
 import React, { Component } from 'react';
+// const ReactMarkdown = require('react-markdown')
+import showdown from 'showdown';
 import utils from '../../../assets/utils';
 
 // styled components
@@ -15,6 +17,7 @@ import StyledDescription from '../../../assets/StyledComponents/EventInfo/EventD
 // components
 import ClickedEvent from '../../ClickedEvent/ClickedEvent';
 
+const converter = new showdown.Converter();
 class Event extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +26,7 @@ class Event extends Component {
       isClicked: false
     };
 
+    this.createMarkUp = this.createMarkUp.bind(this);
     this.toggleEventModal = this.toggleEventModal.bind(this);
   };
 
@@ -31,6 +35,10 @@ class Event extends Component {
     this.setState({ isClicked: !isClicked });
   };
 
+  createMarkUp() {
+    let desc = this.props.event.description ? converter.makeHtml(this.props.event.description.substring(0, 175) + "...") : "This event does not have a description.";
+    return { __html: desc }
+  }
 
   render() {
     const { event } = this.props;
@@ -70,15 +78,15 @@ class Event extends Component {
         </Container>
 
         <Container rows={[8, 13]} cols={[1, 10]}>
-          <StyledDescription onClick={this.toggleEventModal} className="event-desc">
-            {event.description ? convert(event.description.substring(0, 175) + "...") : 'There is no description for this event, sorry'}
+          <StyledDescription dangerouslySetInnerHTML={this.createMarkUp()} onClick={this.toggleEventModal} id="event-desc" >
+            {/* {event.description ? converter.makeHtml(convert(event.description.substring(0, 175) + "...")) : 'There is no description for this event, sorry'} */}
           </StyledDescription>
         </Container>
         <Modal open={isClicked} onClose={this.toggleEventModal} center>
           <ClickedEvent {...event}></ClickedEvent>
         </Modal>
         {/* </StyledEventInfo> */}
-      </StyledEvent>
+      </StyledEvent >
     );
   };
 };

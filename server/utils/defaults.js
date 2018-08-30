@@ -3,5 +3,6 @@ module.exports = {
   "image_sizes": (sizes = ['large', 'medium']) => `&image_sizes=${sizes.join(',')}`,
   "sort_order": (option = 'popularity') => `&sort_order=${option}`,
   "page_size": (numOfResults = 12) => `&page_size=${numOfResults}`,
+  "page_number": (page = 1) => `&page_number=${page}`,
 
 };

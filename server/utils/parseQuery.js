@@ -16,9 +16,14 @@ module.exports = (query) => {
     within,
     image_sizes,
     sort,
-    page_size
+    page_size,
+    page_number
   } = query;
 
+
+  if (!location && !time && !keywords) {
+    throw new Error('Must enter one of these options (location | time | keyword).')
+  }
   // ************************** SET THE KEY
   queryString = queryString + key;
 
@@ -37,6 +42,7 @@ module.exports = (query) => {
   queryString = queryString
     + defaults.image_sizes(image_sizes)
     + defaults.sort_order(sort)
-    + defaults.page_size(page_size);
+    + defaults.page_size(page_size)
+    + defaults.page_number(page_number);
   return queryString;
 }

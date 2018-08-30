@@ -42,11 +42,16 @@ exports[`Event Component Should render component 1`] = `
       className="event-venue"
       style={
         Object {
-          "top": "10px",
+          "paddingLeft": "0",
+          "top": "20px",
         }
       }
     >
-      Mann Center for the Performing Arts
+      <a
+        href="http://philadelphia.eventful.com/venues/mann-center-for-the-performing-arts-/V0-001-000282568-8?utm_source=apis&utm_medium=apim&utm_campaign=apic"
+      >
+        Mann Center for the Performing Arts
+      </a>
     </styled.span>
   </styled.div>
   <styled.div
@@ -65,6 +70,7 @@ exports[`Event Component Should render component 1`] = `
   >
     <styled.h4
       className="event-title"
+      onClick={[Function]}
     >
       Sugarland
     </styled.h4>
@@ -88,10 +94,38 @@ exports[`Event Component Should render component 1`] = `
     >
       Philadelphia, PA.
       <br />
-      9/9/2018  7:00 PM
+      <span>
+        9/9/2018
+      </span>
       <br />
-      7:00 PM
+      <span>
+        7:00 PM
+      </span>
     </styled.span>
+  </styled.div>
+  <styled.div
+    cols={
+      Array [
+        1,
+        10,
+      ]
+    }
+    rows={
+      Array [
+        8,
+        13,
+      ]
+    }
+  >
+    <styled.div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<p>There once was a description here but no more. Actually there was no description and a story had to be told. He picked up the watter bottle, took a sip, and put it down. Then …</p>",
+        }
+      }
+      id="event-desc"
+      onClick={[Function]}
+    />
   </styled.div>
   <Modal
     animationDuration={500}

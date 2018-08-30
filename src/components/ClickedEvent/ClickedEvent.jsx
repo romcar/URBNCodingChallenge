@@ -1,5 +1,6 @@
 import moment from 'moment';
-import React, { Component } from 'react'
+import React from 'react'
+import showdown from 'showdown';
 import StyledClickedEvent from '../../assets/StyledComponents/ClickedEvent/ClickedEvent';
 import utils from '../../assets/utils';
 
@@ -14,10 +15,17 @@ import Address from './Address';
 import ModalImage from '../ModalImage/ModalImage';
 import Description from './Description';
 
+const converter = new showdown.Converter();
+
 export default (props) => {
   setTimeout(() => { utils.initMap(google, props.latitude, props.longitude) }, 0);
+  let desc = props.description ? utils.convertSpecialCharsToString(props.description) : null;
+  const createMarkUp = () => {
+    desc = props.description ? converter.makeHtml(props.description) : "Check out Evently for more information!";
+    console.log(desc);
+    return { __html: desc }
+  }
 
-  const desc = props.description ? utils.convertSpecialCharsToString(props.description) : null;
   return (
     <StyledClickedEvent>
       <StyledModalTitle>
@@ -27,7 +35,11 @@ export default (props) => {
         <StyledEventLocation>{`${props.city_name}, ${props.region_abbr}. ${moment(props.start_time).format('llll')}`}</StyledEventLocation>
       </Container>
       <ModalImage image={props.image}></ModalImage>
-      <Description desc={desc}></Description>
+      <Description>
+        <span dangerouslySetInnerHTML={createMarkUp()}>
+
+        </span>
+      </Description>
       <StyledModalMap id="event-modal-map" >
         Map did not display
       </StyledModalMap>

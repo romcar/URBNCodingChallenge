@@ -6,7 +6,7 @@ import StyledModalimage from '../../assets/StyledComponents/ModalImage/ModalImag
 export default ({ image }) => {
 
   return (
-    <Container rows={[3, 8]} cols={[1, 5]}>
+    <Container rows={[3, 8]} cols={[2, 6]}>
       <StyledModalimage src={image ? image.large ? image.large.url : 'https://via.placeholder.com/100x100' : 'https://via.placeholder.com/100x100'}></StyledModalimage>
     </Container>
   )

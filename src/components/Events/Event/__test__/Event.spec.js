@@ -40,9 +40,7 @@ describe('Event Component', () => {
 
   it('Should have the location and time of the event', () => {
     const wrapper = shallow(<Event event={testEvent} />);
-    // time is converted to something readable using moment js
-    // I trust they know what they are doing.
-    const expected = `${testEvent.city_name}, ${testEvent.region_abbr}. ${moment(testEvent.start_time).format('llll')}`
+    const expected = `${testEvent.city_name}, ${testEvent.region_abbr}.${moment(testEvent.start_time).format('l')}${moment(testEvent.start_time).format('LT')}`
     expect(wrapper.find('.event-loc').render().text()).toEqual(expected);
   });
 

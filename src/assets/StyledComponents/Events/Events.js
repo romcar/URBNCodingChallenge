@@ -6,7 +6,7 @@ export default styled.div`
   border: 1px solid ${colors.sidebar};
   height: 100vh;
   width: 100%;
-  padding: 3em 5em;
+  padding: 4em 5em;
   overflow: scroll;
   transition: width 0.34s;
 `;
