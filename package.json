@@ -4,9 +4,10 @@
   "description": "An application using the Eventful API to locate events happening near you.",
   "main": "src/index.js",
   "scripts": {
-    "test": "NODE_ENV=test jest --watch",
-    "start": "webpack-dev-server --config webpack.config.dev.js",
-    "server": "nodemon --inspect server/serverConnection.js",
+    "test": "jest --watch",
+    "start:dev": "webpack-dev-server --config webpack.config.dev.js",
+    "start:prod": "webpack-dev-server --config webpack.config.prod.js",
+    "server": "node server/serverConnection.js",
     "lint": "eslint ."
   },
   "jest": {

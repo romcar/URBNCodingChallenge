@@ -118,12 +118,12 @@ exports[`Event Component Should render component 1`] = `
     }
   >
     <styled.div
+      className="event-desc"
       dangerouslySetInnerHTML={
         Object {
           "__html": "<p>There once was a description here but no more. Actually there was no description and a story had to be told. He picked up the watter bottle, took a sip, and put it down. Then …</p>",
         }
       }
-      id="event-desc"
       onClick={[Function]}
     />
   </styled.div>

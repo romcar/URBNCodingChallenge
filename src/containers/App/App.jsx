@@ -70,7 +70,6 @@ export default class App extends Component {
         let parsedData = JSON.parse(data);
         let { events, page_number, page_count, page_size } = parsedData;
         this.stopSpinner();
-        console.log(parsedData);
 
         this.setState({
           events,
@@ -86,7 +85,6 @@ export default class App extends Component {
   }
 
   startSpinner() {
-    console.log('starting spinner')
     document.getElementById('spinner').style.display = 'inline-block';
   }
 
@@ -112,10 +110,8 @@ export default class App extends Component {
     if (page_number > page_count) {
       page_number = 1;
     }
-    console.log(page_number <= Number(page_count), page_number, page_count);
 
     if (page_number <= Number(page_count)) {
-      console.log('hey')
       this.getEventsFromServer({
         url: '/search',
         location,
@@ -192,7 +188,6 @@ export default class App extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <StyledApp>
         <Container style={{ color: 'white', margin: 'auto' }} rows={[2, 3]} cols={[7, 16]}>

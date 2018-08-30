@@ -8,7 +8,6 @@ import utils from '../../../assets/utils';
 import Container from '../../../assets/StyledComponents/Container/Container';
 import StyledImage from '../../../assets/StyledComponents/Image/Image';
 import StyledEvent from '../../../assets/StyledComponents/Event/Event';
-// import StyledEventInfo from '../../../assets/StyledComponents/EventInfo/EventInfo';
 import StyledEventTitle from '../../../assets/StyledComponents/EventInfo/EventTitle';
 import StyledEventLocation from '../../../assets/StyledComponents/EventInfo/EventLocation';
 import StyledDescription from '../../../assets/StyledComponents/EventInfo/EventDescription';
@@ -42,10 +41,8 @@ class Event extends Component {
   render() {
     const { event } = this.props;
     const { isClicked } = this.state;
-    const convert = utils.convertSpecialCharsToString;
     const time = utils.formatTime(event.start_time);
     const title = utils.shortenStringByType("title", event.title);
-    const saveToSide = this.props.saveToSidebar.bind(this);
 
     return (
       <StyledEvent className="event event-item event-info">
@@ -81,7 +78,7 @@ class Event extends Component {
         </Container>
 
         <Container rows={[8, 13]} cols={[1, 10]}>
-          <StyledDescription dangerouslySetInnerHTML={this.createMarkUp()} onClick={this.toggleEventModal} id="event-desc" >
+          <StyledDescription dangerouslySetInnerHTML={this.createMarkUp()} onClick={this.toggleEventModal} className="event-desc" >
           </StyledDescription>
         </Container>
         <Modal open={isClicked} onClose={this.toggleEventModal} center>
