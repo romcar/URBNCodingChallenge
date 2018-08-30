@@ -5,6 +5,7 @@ const parseQueryString = require('./utils/parseQuery');
 
 const getDefaultEvents = (callback) => {
   console.log('4a) Setting up the request ');
+  let startTime = new Date();
   let defaultQuery = {
     keywords: 'music',
     time: 'this week'
@@ -28,6 +29,7 @@ const getDefaultEvents = (callback) => {
     }
 
     console.log('!!!!! Saving the information into cache');
+    console.log('it took ', (new Date() - startTime) / 1000, 'seconds');
     cache.put('default', JSON.stringify(body), 3600000, (key) => {
       console.log('Refreshing default records');
       getDefaultEvents();
@@ -62,6 +64,7 @@ router.route('/default')
 
 router.route('/search')
   .get((req, res) => {
+    let startTime = new Date();
     console.log(req.query);
     let qs = parseQueryString(req.query);
 
@@ -87,7 +90,9 @@ router.route('/search')
       if (err) {
         res.status(404).send(err);
       }
+      console.log();
       console.log('Events put in cache')
+      console.log('it took ', (new Date() - startTime) / 1000, 'seconds');
       cache.put(qs, JSON.stringify(body), 300000, (k) => {
         console.log(k, 'was removed.');
       });

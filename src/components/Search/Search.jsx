@@ -6,6 +6,7 @@ import Container from '../../assets/StyledComponents/Container/Container';
 // import StyledSearch from '../../assets/StyledComponents/Search/Search';
 import StyledInput from '../../assets/StyledComponents/Input/Input';
 import StyledButton from '../../assets/StyledComponents/Input/Button';
+// import utils from '../../assets/utils';
 
 const StyledDatePicker = styled(DatePicker)`
   display: inline-block;
@@ -20,10 +21,10 @@ export default class Search extends Component {
       date: new Date()
     };
     this.handleLocationChange = this.handleLocationChange.bind(this);
-    this.handleQueryChange = this.handleQueryChange.bind(this);
+    this.handleKeywordChange = this.handleKeywordChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.locationTimer = null;
-    this.queryTimer = null;
+    this.keywordTimer = null;
   }
 
   handleLocationChange(e) {
@@ -37,13 +38,13 @@ export default class Search extends Component {
 
   }
 
-  handleQueryChange(e) {
-    let query = e.target.value;
+  handleKeywordChange(e) {
+    let keywords = e.target.value;
 
-    clearTimeout(this.queryTimer);
+    clearTimeout(this.keywordTimer);
 
-    this.queryTimer = setTimeout(() => {
-      this.setState({ query })
+    this.keywordTimer = setTimeout(() => {
+      this.setState({ keywords })
     }, 1000);
 
   }
@@ -61,36 +62,39 @@ export default class Search extends Component {
             style={{ 'borderRadius': '0.5em 0 0 0.5em' }}
             className='query-location'
             type="text" placeholder="city, state"
-            onChange={this.handleLocationChange} />
+            onChange={this.handleLocationChange}
+          />
           <StyledButton
             onClick={this.props.getLoc}
             className="glyphicon glyphicon-map-marker"
           />
         </Fragment>
 
-        {/* <StyledInput> */}
         <StyledDatePicker
           value={date || new Date()}
           placeholderText="When you looking?"
           selected={this.state.date}
           onChange={this.handleDateChange}
         />
-        {/* </StyledInput> */}
-        {/* <StyledInput
-          type="text"
-          placeholder="today, next week, this week"
-          onChange={this.handleQueryChange} /> */}
-        {/* <StyledButton
-          className="glyphicon glyphicon-calendar"
-        ></StyledButton> */}
 
         <StyledInput
           type="text"
           placeholder="music, dancing"
-          onChange={this.handleQueryChange} />
+          onChange={this.handleKeywordChange}
+        />
+
         <StyledButton
           style={{ 'borderRadius': '0 0.5em 0.5em 0' }}
           className="glyphicon glyphicon-search"
+          onClick={() => {
+            this.props.useCoords(this.state.location);
+            this.props.getEvents({
+              url: '/search',
+              location: this.state.location,
+              time: this.state.date,
+              keywords: this.state.keywords
+            });
+          }}
         ></StyledButton>
       </Container>
     )

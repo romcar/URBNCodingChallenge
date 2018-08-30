@@ -18,7 +18,6 @@ export default (props) => {
   setTimeout(() => { utils.initMap(google, props.latitude, props.longitude) }, 0);
 
   const desc = props.description ? utils.convertSpecialCharsToString(props.description) : null;
-  console.log(props.image.large.url)
   return (
     <StyledClickedEvent>
       <StyledModalTitle>

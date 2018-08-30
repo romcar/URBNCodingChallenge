@@ -10,6 +10,7 @@ import StyledEvent from '../../../assets/StyledComponents/Event/Event';
 // import StyledEventInfo from '../../../assets/StyledComponents/EventInfo/EventInfo';
 import StyledEventTitle from '../../../assets/StyledComponents/EventInfo/EventTitle';
 import StyledEventLocation from '../../../assets/StyledComponents/EventInfo/EventLocation';
+import StyledDescription from '../../../assets/StyledComponents/EventInfo/EventDescription';
 
 // components
 import ClickedEvent from '../../ClickedEvent/ClickedEvent';
@@ -41,7 +42,11 @@ class Event extends Component {
     return (
       <StyledEvent className="event event-item event-info">
         <Container rows={[1, 4]} cols={[1, 4]}>
-          {event.image ? <StyledImage src={event.image.medium.url} className="event-image" onClick={this.toggleEventModal} /> : null}
+          <StyledImage
+            src={event.image ? event.image.medium ? event.image.medium.url : 'https://via.placeholder.com/50x50' : 'https://via.placeholder.com/50x50'}
+            className="event-image"
+            onClick={this.toggleEventModal}
+          />
         </Container>
 
         <Container rows={[4, 5]} cols={[1, 10]}>
@@ -65,9 +70,9 @@ class Event extends Component {
         </Container>
 
         <Container rows={[8, 13]} cols={[1, 10]}>
-          <span onClick={this.toggleEventModal} className="event-desc">
+          <StyledDescription onClick={this.toggleEventModal} className="event-desc">
             {event.description ? convert(event.description.substring(0, 175) + "...") : 'There is no description for this event, sorry'}
-          </span>
+          </StyledDescription>
         </Container>
         <Modal open={isClicked} onClose={this.toggleEventModal} center>
           <ClickedEvent {...event}></ClickedEvent>

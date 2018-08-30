@@ -19,7 +19,7 @@ export default {
   },
   shortenStringByType: (type, string) => {
     let defaults = {
-      title: 60,
+      title: 50,
       desc: 140
     };
     let temp = '';

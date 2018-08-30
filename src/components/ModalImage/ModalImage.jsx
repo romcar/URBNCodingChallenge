@@ -7,7 +7,7 @@ export default ({ image }) => {
 
   return (
     <Container rows={[3, 8]} cols={[1, 5]}>
-      <StyledModalimage src={image.large.url}></StyledModalimage>
+      <StyledModalimage src={image ? image.large ? image.large.url : 'https://via.placeholder.com/100x100' : 'https://via.placeholder.com/100x100'}></StyledModalimage>
     </Container>
   )
 }
