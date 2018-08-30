@@ -5,7 +5,7 @@ export default styled.div`
   position: relative;
   background: ${colors.white};
   border: 1px solid ${colors.sidebar};
-  height: 100vh;
+  ${'' /* height: 100vh; */}
   width: 100%;
   padding: 4em 5em;
   overflow: scroll;

@@ -5,7 +5,9 @@ import Spinner from '../../assets/images/spinner.png';
 
 
 // styled components
+import Container from '../../assets/StyledComponents/Container/Container';
 import StyledApp from './StyledApp';
+import StyledSpinner from '../../assets/StyledComponents/Spinner/Spinner';
 
 // Components
 import Events from '../../components/Events/Events';
@@ -13,7 +15,6 @@ import NavBar from '../../components/NavBar/NavBar';
 import PaginatorControls from '../../components/PaginatorControls/PaginatorControls';
 import SideBar from '../../components/SideBar/Sidebar';
 import Search from '../../components/Search/Search';
-import StyledSpinner from '../../assets/StyledComponents/Spinner/Spinner';
 
 export default class App extends Component {
   constructor(props) {
@@ -194,6 +195,9 @@ export default class App extends Component {
     console.log(this.state)
     return (
       <StyledApp>
+        <Container style={{ color: 'white', margin: 'auto' }} rows={[2, 3]} cols={[7, 16]}>
+          <h1>Find an event around you</h1>
+        </Container>
         <NavBar />
         <Search
           useCoords={this.shouldUseTheCoordinates}

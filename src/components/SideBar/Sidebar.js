@@ -24,7 +24,7 @@ export default class Sidebar extends Component {
       <Container id="sidebar" rows={[5, 21]} cols={[1, 5]}>
         <StyledSideBar>
           <ul className="previous-events-clicked" hidden>
-            <h2> History </h2>
+            <h2 style={{ 'color': 'white' }}> History </h2>
             {this.props.prevClickedEvents.map((e, i) => {
               return (<li key={i} ><a href={e.url}>{e.title}</a></li>)
             })}

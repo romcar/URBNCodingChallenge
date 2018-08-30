@@ -38,8 +38,7 @@ export default class Events extends Component {
     const { rows, cols } = this.state;
     return (
       <Container id="events" rows={rows} cols={cols}>
-        <StyledEvents
-          style={{ height: '100vh' }}>
+        <StyledEvents>
           {this.props.events.event.map(evnt => <Event saveToSidebar={this.props.saveToSidebar} key={evnt.id} event={evnt} />)}
         </StyledEvents>
       </Container>
