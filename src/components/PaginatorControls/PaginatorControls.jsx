@@ -17,7 +17,7 @@ export default (props) => {
         className="glyphicon glyphicon-arrow-left"
         onClick={props.prev}>
       </StyledPaginationControl>
-      <span style={{ color: 'white', fontSize: '3rem', zIndex: '1000', position: 'relative', paddingLeft: '15px' }}>{props.page_number}</span>
+      <span style={{ color: 'white', fontSize: '3rem', position: 'relative', paddingLeft: '15px' }}>{props.page_number}</span>
       <StyledPaginationControl float={'right'}
         className="glyphicon glyphicon-arrow-right"
         onClick={props.next} >

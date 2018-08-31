@@ -74,6 +74,7 @@ export default class Search extends Component {
           value={date || new Date()}
           placeholderText="When you looking?"
           selected={this.state.date}
+          style={{ zIndex: 10002 }}
           onChange={this.handleDateChange}
         />
 
